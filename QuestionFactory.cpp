@@ -87,6 +87,7 @@
 			{
 				currentAnswers[count] = tempAnswers[randomQ];
 				tempAnswers[randomQ] = "";
+
 				if(tempCorrect == randomQ)
 				{
 					SetCorrectAnswer(count);

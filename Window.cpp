@@ -7,6 +7,7 @@ Window::Window() : wxFrame(nullptr, -1, "Quiz Master", wxPoint(500,500), wxSize(
 
 	buttons = new wxButton * [4];
 	answers = new wxStaticText * [4];
+
 	char temp = 'A';
 
 	wxFont font(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
@@ -20,10 +21,13 @@ Window::Window() : wxFrame(nullptr, -1, "Quiz Master", wxPoint(500,500), wxSize(
 	{
 		buttons[i] = QuestionFactory::CreateButton(panel, (wxString)temp, font);
 		buttons[i]->Bind(wxEVT_BUTTON, &Window::OnButtonClicked, this);
+
 		temp++;		
+
 		answerUI->Add(answers[i], 1, wxEXPAND);
 		answerUI->Add(buttons[i], 1, wxEXPAND);
 	}
+
 	sizer->AddSpacer(50);
 	sizer->Add(question, 1, wxCENTER | wxBOTTOM);
 	sizer->Add(answerUI, 1, wxEXPAND | wxCENTER);
@@ -52,7 +56,7 @@ void Window::OnButtonClicked(wxCommandEvent& evt)
 		wxMessageBox("That is incorrect - :(");
 	}
 
-	//Test the game
+	//Reset the game
 	QuestionFactory::Reset(panel, question, answers, correct);
 
 }
